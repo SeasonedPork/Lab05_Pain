@@ -52,15 +52,19 @@ export default {
     }
   },
   created() {
+    
     watchEffect(() => {
-      EventService.getEvents(2, this.page)
+      // eslint-disable-next-line no-used-vars
+      beforeRouteEnter (routeTo, routeFrom, next) {
+          EventService.getEvents(2, this.page)
         .then((response) => {
           this.events = response.data
           this.totalEvents = response.headers['x-total-count']
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+          this.$route.push({ name: 'NetworkError'})
         })
+      };
     })
   },
   computed: {
