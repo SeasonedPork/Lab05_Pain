@@ -7,6 +7,7 @@ import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
+//dont remove nprogress it used but somehow not find in here
 import NProgress, { start } from 'nprogress'
 import EventService from '@/services/EventService.js'
 import GStore from '@/store'

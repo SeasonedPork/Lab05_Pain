@@ -51,7 +51,7 @@ export default {
       totalEvents: 0
     }
   },
-  // eslint-disable-next-line no-used-vars
+  // eslint-disable-next-line no-unused-vars
   beforeRouteEnter(routeTo, routeFrom, next) {
     EventService.getEvents(2, parseInt(routeTo.query.page) || 1).then(
       (response) => {
@@ -61,19 +61,20 @@ export default {
         }).catch(() => {
           next({ name: 'NetworkError ' })
         })
+      }
+    )
+  },
+  beforeRouteUpdate(routeTo, routeForm, next) {
+    EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+      .then((response) => {
+        this.events = response.data //<------
+        this.totalEvents = response.headers['x-total-coiunt'] //<------
+        next() //<------
+      })
+      .catch(() => {
+        next({ name: 'NetworkError' })
       })
   },
-   beforeRouteEnter(routeTo, routeForm, next) {
-        EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
-        .then((response) => {
-          this.events = response.data //<------
-          this.totalEvents = response.headers['x-total-coiunt'] //<------
-          next() //<------
-        })
-        .catch(()=> {
-          next({ name: 'NetworkError'})
-        })
-      },
   computed: {
     hasNextPage() {
       let totalPages = Math.ceil(this.totalEvents / 2)
