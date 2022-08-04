@@ -7,6 +7,7 @@ import EventLayoutView from '@/views/event/EventLayoutView.vue'
 import EventDetailView from '@/views/event/EventDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetWorkErrorView from '@/views/NetworkErrorView.vue'
+import EventEditUserView from '@/views/event/EventEditUserView.vue'
 //dont remove nprogress it used but somehow not find in here
 import NProgress, { start } from 'nprogress'
 import EventService from '@/services/EventService.js'
@@ -66,6 +67,12 @@ const routes = [
         name: 'EventEdit',
         props: true,
         component: EventEditView
+      },
+      {
+        path: 'editUser',
+        name: 'EventEditUser',
+        props: true,
+        component: EventEditUserView
       }
     ]
   },

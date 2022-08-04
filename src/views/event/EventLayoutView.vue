@@ -7,6 +7,8 @@
       <router-link :to="{ name: 'EventRegister' }">Register</router-link>
       |
       <router-link :to="{ name: 'EventEdit' }">Edit</router-link>
+      |
+      <router-link :to="{ name: 'EventEditUser' }">Edit</router-link>
     </div>
     <router-view :event="GStore.event" />
   </div>
